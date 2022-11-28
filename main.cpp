@@ -3,9 +3,6 @@
 #include <functional>
 
 #include "common/loadShader.hpp"
-#include "common/loadBMP.hpp"
-#include "common/VBOindex.hpp"
-#include "common/loadOBJ.hpp"
 
 #include "include/display.hpp"
 #include "include/boids.hpp"
@@ -13,7 +10,7 @@
 int main()
 {
 	glfwInit();
-    glfwWindowHint(GLFW_SAMPLES, 4);
+    	glfwWindowHint(GLFW_SAMPLES, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -91,7 +88,7 @@ int main()
 	newColors[3+nbBoids*3*3] = 1;
 	newColors[6+nbBoids*3*3] = 1;
 
-    // glfwSetCursorPos(window, width/2, height/2);
+   	// glfwSetCursorPos(window, width/2, height/2);
 	// glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 	
 	glEnable(GL_BLEND);
@@ -102,10 +99,10 @@ int main()
 	{
 		fps(window, lastTime, lastTimeFPS, n_frame, deltaTime); // Update deltaTime and display fps
 
-        glEnable(GL_DEPTH_TEST);
-        glDepthFunc(GL_LESS);
-        glEnable(GL_CULL_FACE);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        	glEnable(GL_DEPTH_TEST);
+        	glDepthFunc(GL_LESS);
+        	glEnable(GL_CULL_FACE);
+        	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glClearColor(0, 0, 0, 1);
 
 		glBindVertexArray(VAO);
@@ -114,7 +111,7 @@ int main()
 
 		// * Predator
 		double xpos, ypos;
-    	glfwGetCursorPos(window, &xpos, &ypos);
+    		glfwGetCursorPos(window, &xpos, &ypos);
 		xpos = xpos*2/width - 1;
 		ypos = - ypos*2/height + 1;
 
@@ -196,14 +193,14 @@ int main()
 		}
 
 		glEnableVertexAttribArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, vertexbufferBoids);
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(boidsVertices), &newTriangle);
+        	glBindBuffer(GL_ARRAY_BUFFER, vertexbufferBoids);
+        	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
+        	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(boidsVertices), &newTriangle);
 
 		glEnableVertexAttribArray(1);
-        glBindBuffer(GL_ARRAY_BUFFER, colorbufferBoids);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(boidsColors), &newColors);
+        	glBindBuffer(GL_ARRAY_BUFFER, colorbufferBoids);
+        	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+        	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(boidsColors), &newColors);
 
 		glDrawArrays(GL_TRIANGLES, 0, 3*(nbBoids+1));
 
